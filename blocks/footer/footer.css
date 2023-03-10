@@ -5,7 +5,15 @@
 
 @media screen and (max-width: 880px) {
     .footer {
-        max-width: 282px;
-    }
-    
+        width: 584px;
+        font-size: 14px;
+        line-height: 16.94px;
+        margin: 48px auto 36px auto;
+    } 
+}
+
+@media screen and (max-width: 585px) {
+    .footer {
+        width: 282px;
+    } 
 }

@@ -2,9 +2,12 @@
     width: 22px;
     height: 19px;
     background-image: url(../../../image/logo-like.png);
+    background-repeat: no-repeat;
+    background-position: center;
     margin: 0;
 }
 
 .element__like:hover {
     opacity: .5;
+    cursor: pointer;
 }

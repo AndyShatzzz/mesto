@@ -17,6 +17,7 @@
 @import url(../blocks/elements/__grid/element__grid.css);
 @import url(../blocks/elements/__image/element__image.css);
 @import url(../blocks/elements/__like/element__like.css);
+@import url(../blocks/elements/__like/_active/element__like_active.css);
 @import url(../blocks/elements/__text/element__text.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__text/footer__text.css);
