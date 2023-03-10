@@ -8,7 +8,7 @@ let saveButton = formElement.querySelector('.popup__submit');
 
 function openPopup() {
     let popup = document.querySelector('.popup');
-    popup.classList.remove('popup__closed');
+    popup.classList.remove('popup_closed');
     nameInput.value = profileName.textContent;
     jobInput.value = profileAbout.textContent;
 }
@@ -18,7 +18,7 @@ buttonEdit.addEventListener('click', openPopup);
 let buttonClose = document.querySelector('.popup__close');
 function closePopup() {
     let popup = document.querySelector('.popup');
-    popup.classList.add('popup__closed');
+    popup.classList.add('popup_closed');
 }
 
 buttonClose.addEventListener('click', closePopup);
