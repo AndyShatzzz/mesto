@@ -4,7 +4,11 @@
     background-image: url(../../../image/logo-like.png);
     background-repeat: no-repeat;
     background-position: center;
+    background-size: contain;
     margin: 0;
+    flex: none;
+    box-sizing: content-box;
+    
 }
 
 .element__like:hover {
