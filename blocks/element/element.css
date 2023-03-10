@@ -1,4 +1,4 @@
-.elements {
+.element {
     max-width: 880px;
     margin: 51px auto 0;
     display: grid;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 880px) {
-    .elements {
+    .element {
         max-width: 584px;
         margin: 36px auto 0;
     }
@@ -16,7 +16,7 @@
 }
 
 @media screen and (max-width: 585px) {
-    .elements {
+    .element {
         max-width: 282px;
     }
 }
