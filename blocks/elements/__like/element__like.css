@@ -1,0 +1,10 @@
+.element__like {
+    width: 22px;
+    height: 19px;
+    background-image: url(../../../image/logo-like.png);
+    margin: 0;
+}
+
+.element__like:hover {
+    opacity: .5;
+}
