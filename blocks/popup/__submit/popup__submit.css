@@ -8,10 +8,18 @@
     line-height: 21.78px;
     color: #fff;
     margin: 48px 36px 37px;
+    border: none;
+}
+
+.popup__submit:hover {
+    opacity: .8;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 585px) {
     .popup__submit {
+        font-size: 14px;
+        line-height: 16.94px;
         width: 238px;
         margin: 45px 22px 25px;
     }

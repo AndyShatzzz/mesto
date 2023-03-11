@@ -1,10 +1,12 @@
 .profile__edit-button {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
+    background-color: #000;
     background-image: url(../../../image/logo-pencil.png);
     background-position: center;
     background-repeat: no-repeat;
-    margin: auto 0 0 18px;
+    margin: auto 0 7px 18px;
+    padding: 0;
     border: 1px solid #FFFFFF;
 }
 
@@ -13,7 +15,7 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 880px) {
+@media screen and (max-width: 900px) {
     .profile__edit-button {
         width: 16px;
         height: 16px;

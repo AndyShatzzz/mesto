@@ -7,7 +7,7 @@
     column-gap: 17px;
 }
 
-@media screen and (max-width: 880px) {
+@media screen and (max-width: 900px) {
     .element {
         max-width: 584px;
         margin: 36px auto 0;
@@ -15,7 +15,7 @@
     
 }
 
-@media screen and (max-width: 585px) {
+@media screen and (max-width: 600px) {
     .element {
         max-width: 282px;
     }

@@ -2,7 +2,7 @@
     display: flex;
 }
 
-@media screen and (max-width: 880px) {
+@media screen and (max-width: 900px) {
     .profile__row-top {
         justify-content: center;
         align-items: center;
