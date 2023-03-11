@@ -1,13 +1,13 @@
 .profile__edit-button {
     width: 24px;
     height: 24px;
-    background-color: #000;
+    background-color: black;
     background-image: url(../../../image/logo-pencil.png);
     background-position: center;
     background-repeat: no-repeat;
     margin: auto 0 7px 18px;
     padding: 0;
-    border: 1px solid #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 1);
 }
 
 .profile__edit-button:hover {
