@@ -4,7 +4,6 @@ let nameInput = formElement.querySelector('#input-name');
 let jobInput = formElement.querySelector('#input-job');
 let profileName = document.querySelector('.profile__name');
 let profileAbout = document.querySelector('.profile__about');
-let saveButton = formElement.querySelector('.popup__submit');
 let buttonClose = document.querySelector('.popup__close');
 let popup = document.querySelector('.popup');
 
