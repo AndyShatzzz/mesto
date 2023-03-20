@@ -75,13 +75,25 @@
                 </div>
             </div>
         </section>
+
+        <div class="element"></div>
+
+        <template id="element__grid">
+            <div class="element__grid">
+                <img class="element__image" alt="image">
+                <div class="element__about">
+                    <h2 class="element__text"></h2>
+                    <button class="element__like" type="button"></button>
+                </div>
+            </div>
+        </template>
     </main>
     <footer class="footer">
         <p class="footer__text">&COPY; 2023 Mesto Russia</p>
     </footer>
-
-    <div class="popup">
-        <div class="popup__container">
+<!--Попап открытия редактирования имени и профессии. -->
+    <div class="popup popup_type_edit-profile">
+        <div class="popup__container popup__container_type_edit-profile">
             <form class="popup__form" name="profile-form" method="post">
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <input class="popup__input" type="text" placeholder="Имя" name="input-name"
@@ -90,7 +102,21 @@
                     id="input-job">
                 <button class="popup__submit" type="submit">Сохранить</button>
             </form>
-            <button class="popup__close" type="button"></button>
+            <button class="popup__close popup__close_type_edit-profile" type="button"></button>
+        </div>
+    </div>
+<!--Попап добавления новой кароточки элементов. -->
+    <div class="popup popup_type_add-card">
+        <div class="popup__container popup__container_type_add-card">
+            <form class="popup__form" name="profile-form" method="post">
+                <h2 class="popup__title">Новое место</h2>
+                <input class="popup__input" type="text" placeholder="Название" name="input-place"
+                    id="input-place">
+                <input class="popup__input" type="text" placeholder="Ссылка на картинку" name="input-link"
+                    id="input-link">
+                <button class="popup__submit" type="submit">Сохранить</button>
+            </form>
+            <button class="popup__close popup__close_type_add-card" type="button"></button>
         </div>
     </div>
     <script src="./scripts/script.js"></script>
