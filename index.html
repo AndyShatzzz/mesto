@@ -26,61 +26,13 @@
             <button class="profile__add-button" type="button"></button>
         </section>
 
-        <section class="element">
-            <div class="element__grid">
-                <img class="element__image" src="./image/mesto-Baikal.png" alt="Фото озера Байкал">
-                <div class="element__about">
-                    <h2 class="element__text">Озеро Байкал</h2>
-                    <button class="element__like" type="button"></button>
-                </div>
-            </div>
+        <section class="element" id="el__card">
 
-            <div class="element__grid">
-                <img class="element__image" src="./image/Mesto-Dombay.png" alt="Фото горы Домбай">
-                <div class="element__about">
-                    <h2 class="element__text">Домбай</h2>
-                    <button class="element__like" type="button"></button>
-                </div>
-            </div>
-
-            <div class="element__grid">
-                <img class="element__image" src="./image/mesto-Elbrus.png" alt="Фото заката на Эльбрусе">
-                <div class="element__about">
-                    <h2 class="element__text">Эльбрус</h2>
-                    <button class="element__like" type="button"></button>
-                </div>
-            </div>
-
-            <div class="element__grid">
-                <img class="element__image" src="./image/mesto-Karachayevsk.png" alt="Фото Карачаевска">
-                <div class="element__about">
-                    <h2 class="element__text">Карачаевск</h2>
-                    <button class="element__like" type="button"></button>
-                </div>
-            </div>
-
-            <div class="element__grid">
-                <img class="element__image" src="./image/mesto-Kudykina-Gora.png" alt="Фото Кудыкиной горы">
-                <div class="element__about">
-                    <h2 class="element__text">Кудыкина гора</h2>
-                    <button class="element__like" type="button"></button>
-                </div>
-            </div>
-
-            <div class="element__grid">
-                <img class="element__image" src="./image/mesto-Sky-Park.png" alt="Подвесной мост, Скайпарк">
-                <div class="element__about">
-                    <h2 class="element__text">Скайпарк Сочи</h2>
-                    <button class="element__like" type="button"></button>
-                </div>
-            </div>
         </section>
-
-        <div class="element"></div>
-
+        
         <template id="element__grid">
             <div class="element__grid">
-                <img class="element__image" alt="image">
+                <img class="element__image">
                 <div class="element__about">
                     <h2 class="element__text"></h2>
                     <button class="element__like" type="button"></button>
@@ -100,7 +52,7 @@
                     id="input-name">
                 <input class="popup__input" type="text" placeholder="О себе" name="input-job"
                     id="input-job">
-                <button class="popup__submit" type="submit">Сохранить</button>
+                <button class="popup__submit" type="submit" id="submit__edit">Сохранить</button>
             </form>
             <button class="popup__close popup__close_type_edit-profile" type="button"></button>
         </div>
@@ -112,9 +64,9 @@
                 <h2 class="popup__title">Новое место</h2>
                 <input class="popup__input" type="text" placeholder="Название" name="input-place"
                     id="input-place">
-                <input class="popup__input" type="text" placeholder="Ссылка на картинку" name="input-link"
+                <input class="popup__input" type="url" placeholder="Ссылка на картинку" name="input-link"
                     id="input-link">
-                <button class="popup__submit" type="submit">Сохранить</button>
+                <button class="popup__submit" type="submit" id="submit__add">Сохранить</button>
             </form>
             <button class="popup__close popup__close_type_add-card" type="button"></button>
         </div>
