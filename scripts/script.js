@@ -150,6 +150,18 @@ submitAdd.addEventListener('click', handleSubmitAddCard);
 
 // Функция открытия картинки на весь экран
 const image = elementGrid.querySelector('.element__image');
-image.addEventListener(click, function() {
-  image.classList.toggle('element__image_type_opened');
-});
+const footer = document.querySelector('.footer__text'); // Для теста!!!!!!!!!!!!!!!!!!!!!
+const imgPopup = document.querySelector('.popup_type_img-fullscreen');
+const buttonCloseImage = document.querySelector('.popup__close_type_img-fullscreen');
+
+function openImgPopup() {
+  imgPopup.classList.add('popup_opened');
+};
+
+footer.addEventListener('click', openImgPopup); // Для теста!!!!!!!!!!!!!!!!!!
+
+function closeImgPopup() {
+  imgPopup.classList.remove('popup_opened');
+};
+
+buttonCloseImage.addEventListener('click', closeImgPopup);
