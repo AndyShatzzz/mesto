@@ -56,12 +56,6 @@ let cardTemplate = document.querySelector('#element__grid').content;
 let element = document.querySelector('#el__card');
 
 
-
-// // elementGrid.querySelector('.element__image').src = 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-// // elementGrid.querySelector('.element__text').textContent = 'Архыз';
-// // element.append(elementGrid);
-
-
 const initialCards = [
   {
     name: 'Архыз',
@@ -89,9 +83,31 @@ const initialCards = [
   }
 ];
 
+// Функция для лайков
+function handleCardLike(evt) {
+  if (evt.target.classList.contains('element__like')) {
+    evt.target.classList.toggle('element__like_active');
+  };
+};
+
+// Функция для удаления по клику на корзинку
+const elementGrid = cardTemplate.querySelector('.element__grid');
+const buttonBasket = elementGrid.querySelector('#element__basket');
+
+function handleRemoveCard(evt) {
+  if (evt.target.classList.contains('element__basket')) {
+    const cardTarget = evt.target.closest('.element__grid');
+  cardTarget.remove();
+  };
+};
+
+element.addEventListener('click', evt => {
+  handleRemoveCard(evt);
+  handleCardLike(evt);
+});
 
 function createCard (item) {
-  let elementGrid = cardTemplate.querySelector('.element__grid').cloneNode(true);
+  const elementGrid = cardTemplate.querySelector('.element__grid').cloneNode(true);
   elementGrid.querySelector('.element__image').src = item.link;
   elementGrid.querySelector('.element__text').textContent = item.name;
   elementGrid.querySelector('.element__image').alt = item.name;
@@ -116,7 +132,7 @@ let placeInput = document.querySelector('#input-place');
 let linkInput = document.querySelector('#input-link');
 
 function addNewCard () { 
-  let elementGrid = cardTemplate.querySelector('.element__grid').cloneNode(true);
+  const elementGrid = cardTemplate.querySelector('.element__grid').cloneNode(true);
   elementGrid.querySelector('.element__text').textContent = placeInput.value;
   elementGrid.querySelector('.element__image').src = linkInput.value;
   elementGrid.querySelector('.element__image').alt = placeInput.value;
@@ -126,14 +142,14 @@ function addNewCard () {
 function handleSubmitAddCard (evt) {
   evt.preventDefault();
   const newCardElement = addNewCard();
-  addCard(newCardElement);
+  element.prepend(newCardElement);
   closeAddPopup();
 };
 
 submitAdd.addEventListener('click', handleSubmitAddCard);
 
-// Функциональность лайка
-let elementAbout = document.querySelector('.element__about');
-let elementLike = elementAbout.querySelector('.element__like').addEventListener('click', function(evt){
-  evt.target.classList.toggle('element__like_active');
+// Функция открытия картинки на весь экран
+const image = elementGrid.querySelector('.element__image');
+image.addEventListener(click, function() {
+  image.classList.toggle('element__image_type_opened');
 });
