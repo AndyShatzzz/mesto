@@ -11,6 +11,14 @@ let popupEdit = document.querySelector('.popup_type_edit-profile');
 let popupAdd = document.querySelector('.popup_type_add-card');
 let submitEdit = document.querySelector('#submit__edit');
 let submitAdd = document.querySelector('#submit__add');
+//функция открытия попапа
+function openPopup (item) {
+  item.classList.add('popup_opened');
+}
+//функция закрытия попапа
+function closePopup (item) {
+  item.classList.remove('popup_opened');
+}
 
 // Открытие формы редактирования профиля.
 function openEditPopup() {
@@ -49,7 +57,7 @@ function closeAddPopup() {
     popupAdd.classList.remove('popup_opened');
 };
 
-buttonCloseAdd.addEventListener('click', closeAddPopup);
+
 
 // Добавление карточек массива по умолчанию.
 let cardTemplate = document.querySelector('#element__grid').content;
@@ -111,6 +119,9 @@ function createCard (item) {
   elementGrid.querySelector('.element__image').src = item.link;
   elementGrid.querySelector('.element__text').textContent = item.name;
   elementGrid.querySelector('.element__image').alt = item.name;
+  elementGrid.querySelector('.element__image').addEventListener('click', function(evt){
+    openImgPopup(evt);
+  });
   return elementGrid;
 };
 
@@ -150,18 +161,34 @@ submitAdd.addEventListener('click', handleSubmitAddCard);
 
 // Функция открытия картинки на весь экран
 const image = elementGrid.querySelector('.element__image');
+
 const footer = document.querySelector('.footer__text'); // Для теста!!!!!!!!!!!!!!!!!!!!!
 const imgPopup = document.querySelector('.popup_type_img-fullscreen');
+const imageFromPopup = document.querySelector('.popup__image');
+const textFromPopup = document.querySelector('.popup__text');
 const buttonCloseImage = document.querySelector('.popup__close_type_img-fullscreen');
 
-function openImgPopup() {
+function createImgPopup(evt) {
+  const eTarget = evt.target;
+  imageFromPopup.src = eTarget.src;
+  textFromPopup.textContent = eTarget.alt;
+};
+
+
+function openImgPopup(evt) {
+  createImgPopup(evt);
   imgPopup.classList.add('popup_opened');
+  
 };
 
 footer.addEventListener('click', openImgPopup); // Для теста!!!!!!!!!!!!!!!!!!
 
-function closeImgPopup() {
-  imgPopup.classList.remove('popup_opened');
-};
 
-buttonCloseImage.addEventListener('click', closeImgPopup);
+buttonCloseAdd.addEventListener('click', function() {
+  closePopup(popupAdd);
+});
+buttonCloseImage.addEventListener('click', function() {
+  closePopup(imgPopup);
+});
+
+
