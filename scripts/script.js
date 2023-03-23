@@ -12,10 +12,9 @@ const popupAdd = document.querySelector('.popup_type_add-card');
 const submitEdit = document.querySelector('#submit__edit');
 const submitAdd = document.querySelector('#submit__add');
 const cardTemplate = document.querySelector('#element__grid').content;
-const element = document.querySelector('#el__card');
+const elementCard = document.querySelector('#el__card');
 const elementGrid = cardTemplate.querySelector('.element__grid');
 const buttonBasket = elementGrid.querySelector('#element__basket');
-const image = elementGrid.querySelector('.element__image');
 const placeInput = document.querySelector('#input-place');
 const linkInput = document.querySelector('#input-link');
 const imgPopup = document.querySelector('.popup_type_img-fullscreen');
@@ -78,7 +77,7 @@ function handleFormEditSubmit (evt) {
 function handleSubmitAddCard (evt) {
   evt.preventDefault();
   const newCardElement = addNewCard();
-  element.prepend(newCardElement);
+  elementCard.prepend(newCardElement);
   closePopup(popupAdd);
 };
 
@@ -111,7 +110,7 @@ function createCard (item) {
 
 // Функция добавления карточки
 function addCard(item) {
-  element.append(item);
+  elementCard.append(item);
 };
 
 // Функция рендера карточек
@@ -175,7 +174,7 @@ buttonCloseImage.addEventListener('click', function() {
 submitEdit.addEventListener('click', handleFormEditSubmit);
 
 // Организатор событий по event
-element.addEventListener('click', evt => {
+elementCard.addEventListener('click', evt => {
   handleRemoveCard(evt);
   handleCardLike(evt);
 });
