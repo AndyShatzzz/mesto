@@ -1,8 +1,8 @@
 const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonAdd = document.querySelector('.profile__add-button');
-const formElement = document.querySelector('.popup__form');
-const nameInput = formElement.querySelector('#input-name');
-const jobInput = formElement.querySelector('#input-job');
+const formElementEdit = document.querySelector('#form-edit');
+const nameInput = formElementEdit.querySelector('#input-name');
+const jobInput = formElementEdit.querySelector('#input-job');
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
 const buttonCloseEdit = document.querySelector('.popup__close_type_edit-profile');
@@ -12,9 +12,11 @@ const popupAdd = document.querySelector('.popup_type_add-card');
 const submitEdit = document.querySelector('#submit__edit');
 const submitAdd = document.querySelector('#submit__add');
 const cardTemplate = document.querySelector('#element__grid').content;
-const elementCard = document.querySelector('#el__card');
+const element = document.querySelector('#el__card');
 const elementGrid = cardTemplate.querySelector('.element__grid');
 const buttonBasket = elementGrid.querySelector('#element__basket');
+const image = elementGrid.querySelector('.element__image');
+const formElementAdd = document.querySelector('#form-add');
 const placeInput = document.querySelector('#input-place');
 const linkInput = document.querySelector('#input-link');
 const imgPopup = document.querySelector('.popup_type_img-fullscreen');
@@ -62,7 +64,7 @@ function closePopup (item) {
 // Функция открытие попапа картинки на весь экран
 function openImgPopup(evt) {
   createImgPopup(evt);
-  imgPopup.classList.add('popup_opened');
+  openPopup(imgPopup);
 };
 
 // Функция изменения Имени и Профессии.
@@ -76,8 +78,8 @@ function handleFormEditSubmit (evt) {
 // Функция добавления новой карточки по event
 function handleSubmitAddCard (evt) {
   evt.preventDefault();
-  const newCardElement = addNewCard();
-  elementCard.prepend(newCardElement);
+  const newCardElement = createCard(evt);
+  element.prepend(newCardElement);
   closePopup(popupAdd);
 };
 
@@ -99,9 +101,9 @@ function handleRemoveCard(evt) {
 // Функция создания карточки
 function createCard (item) {
   const elementGrid = cardTemplate.querySelector('.element__grid').cloneNode(true);
-  elementGrid.querySelector('.element__image').src = item.link;
-  elementGrid.querySelector('.element__text').textContent = item.name;
-  elementGrid.querySelector('.element__image').alt = item.name;
+  elementGrid.querySelector('.element__image').src = item.link || linkInput.value;
+  elementGrid.querySelector('.element__text').textContent = item.name || placeInput.value;
+  elementGrid.querySelector('.element__image').alt = item.name || placeInput.value;
   elementGrid.querySelector('.element__image').addEventListener('click', function(evt){
     openImgPopup(evt);
   });
@@ -110,7 +112,7 @@ function createCard (item) {
 
 // Функция добавления карточки
 function addCard(item) {
-  elementCard.append(item);
+  element.append(item);
 };
 
 // Функция рендера карточек
@@ -122,23 +124,12 @@ function renderCards () {
 };
 renderCards();
 
-// Функция по добавлению новых карточек по ссылкам
-function addNewCard () { 
-  const elementGrid = cardTemplate.querySelector('.element__grid').cloneNode(true);
-  elementGrid.querySelector('.element__text').textContent = placeInput.value;
-  elementGrid.querySelector('.element__image').src = linkInput.value;
-  elementGrid.querySelector('.element__image').alt = placeInput.value;
-  elementGrid.querySelector('.element__image').addEventListener('click', function(evt){
-    openImgPopup(evt);
-  });
-  return elementGrid;
-};
-
 // Функция создания попапа с картинками на весь экран
 function createImgPopup(evt) {
   const eTarget = evt.target;
   imageFromPopup.src = eTarget.src;
   textFromPopup.textContent = eTarget.alt;
+  imageFromPopup.alt = eTarget.alt;
 };
 
 // Слушатель открытия формы редактирования профиля.
@@ -171,14 +162,13 @@ buttonCloseImage.addEventListener('click', function() {
 });
 
 // Слушатель изменения Имени и Профессии.
-submitEdit.addEventListener('click', handleFormEditSubmit);
+formElementEdit.addEventListener('submit', handleFormEditSubmit);
 
 // Организатор событий по event
-elementCard.addEventListener('click', evt => {
+element.addEventListener('click', evt => {
   handleRemoveCard(evt);
   handleCardLike(evt);
 });
 
 // Слушатель добавления новой карточки
-submitAdd.addEventListener('click', handleSubmitAddCard);
-
+formElementAdd.addEventListener('submit', handleSubmitAddCard);
