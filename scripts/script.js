@@ -1,8 +1,8 @@
 const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonAdd = document.querySelector('.profile__add-button');
 const formElementEdit = document.querySelector('#form-edit');
-const nameInput = formElementEdit.querySelector('#input-name');
-const jobInput = formElementEdit.querySelector('#input-job');
+const nameInput = formElementEdit.querySelector('#name-input');
+const jobInput = formElementEdit.querySelector('#job-input');
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
 const buttonCloseEdit = document.querySelector('.popup__close_type_edit-profile');
@@ -17,12 +17,13 @@ const elementGrid = cardTemplate.querySelector('.element__grid');
 const buttonBasket = elementGrid.querySelector('#element__basket');
 const image = elementGrid.querySelector('.element__image');
 const formElementAdd = document.querySelector('#form-add');
-const placeInput = document.querySelector('#input-place');
-const linkInput = document.querySelector('#input-link');
+const placeInput = document.querySelector('#place-input');
+const linkInput = document.querySelector('#link-input');
 const imgPopup = document.querySelector('.popup_type_img-fullscreen');
 const imageFromPopup = document.querySelector('.popup__image');
 const textFromPopup = document.querySelector('.popup__text');
 const buttonCloseImage = document.querySelector('.popup__close_type_img-fullscreen');
+const closeButtons = document.querySelectorAll('.popup__close');
 
 // Массив карточек по умолчанию.
 const initialCards = [
@@ -60,6 +61,12 @@ function openPopup (item) {
 function closePopup (item) {
   item.classList.remove('popup_opened');
 };
+
+// Функция закрытия всех попапов по крестику
+closeButtons.forEach((button) => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup));
+});
 
 // Функция открытие попапа картинки на весь экран
 function openImgPopup(evt) {
@@ -139,26 +146,11 @@ buttonEdit.addEventListener('click', function () {
   openPopup(popupEdit);
 });
 
-// Слушатель закрытия попапа редактирования профиля
-buttonCloseEdit.addEventListener('click', function() {
-  closePopup(popupEdit);
-});
-
 // Слушатель открытия попапа добавления карточки
 buttonAdd.addEventListener('click', function(){
   placeInput.value = '';
   linkInput.value = '';
   openPopup(popupAdd);
-});
-
-// Слушатель закрытия попапа добавления карточки
-buttonCloseAdd.addEventListener('click', function() {
-  closePopup(popupAdd);
-});
-
-// Слушатель закрытия попапа картинки на весь экран
-buttonCloseImage.addEventListener('click', function() {
-  closePopup(imgPopup);
 });
 
 // Слушатель изменения Имени и Профессии.
@@ -172,3 +164,43 @@ element.addEventListener('click', evt => {
 
 // Слушатель добавления новой карточки
 formElementAdd.addEventListener('submit', handleSubmitAddCard);
+
+
+
+
+// Слушатели для закрытия попапов по оверлею или по Esc 
+popupEdit.addEventListener('click', (evt) => {
+  if (evt.currentTarget === evt.target) {
+    closePopup(popupEdit);
+  }
+});
+
+document.addEventListener('keydown', (evt) => {
+  if (evt.key === 'Escape') {
+    closePopup(popupEdit);
+  }
+});
+
+popupAdd.addEventListener('click', (evt) => {
+  if (evt.currentTarget === evt.target) {
+    closePopup(popupAdd);
+  }
+});
+
+document.addEventListener('keydown', (evt) => {
+  if (evt.key === 'Escape') {
+    closePopup(popupAdd);
+  }
+});
+
+imgPopup.addEventListener('click', (evt) => {
+  if (evt.currentTarget === evt.target) {
+    closePopup(imgPopup);
+  }
+});
+
+document.addEventListener('keydown', (evt) => {
+  if (evt.key === 'Escape') {
+    closePopup(imgPopup);
+  }
+});

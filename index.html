@@ -47,13 +47,21 @@
 <!--Попап открытия редактирования имени и профессии. -->
     <div class="popup popup_type_edit-profile">
         <div class="popup__container popup__container_type_edit-profile">
-            <form class="popup__form" name="profile-form" method="post" id="form-edit">
-                <h2 class="popup__title">Редактировать профиль</h2>
-                <input class="popup__input" type="text" placeholder="Имя" name="input-name"
-                    id="input-name">
-                <input class="popup__input" type="text" placeholder="О себе" name="input-job"
-                    id="input-job">
-                <button class="popup__submit" type="submit" id="submit__edit">Сохранить</button>
+            <form class="popup__form" name="profile-form" method="post" id="form-edit" novalidate>
+                <fieldset class="popup__set">
+                    <h2 class="popup__title">Редактировать профиль</h2>
+                    <label class="popup__field">
+                        <input class="popup__input" type="text" placeholder="Имя" name="input-name"
+                            id="name-input" required minlength="2" maxlength="40">
+                        <span class="popup__input-error name-input-error"></span>
+                    </label>
+                    <label class="popup__field">
+                        <input class="popup__input" type="text" placeholder="О себе" name="input-job"
+                            id="job-input" required minlength="2" maxlength="200">
+                        <span class="popup__input-error job-input-error"></span>
+                    </label>
+                    <button class="popup__submit" type="submit" id="submit__edit">Сохранить</button>
+                </fieldset>
             </form>
             <button class="popup__close popup__close_type_edit-profile" type="button"></button>
         </div>
@@ -61,13 +69,21 @@
 <!--Попап добавления новой кароточки элементов. -->
     <div class="popup popup_type_add-card">
         <div class="popup__container popup__container_type_add-card">
-            <form class="popup__form" name="profile-form" method="post" id="form-add">
-                <h2 class="popup__title">Новое место</h2>
-                <input class="popup__input" type="text" placeholder="Название" name="input-place"
-                    id="input-place">
-                <input class="popup__input" type="url" placeholder="Ссылка на картинку" name="input-link"
-                    id="input-link">
-                <button class="popup__submit" type="submit" id="submit__add">Сохранить</button>
+            <form class="popup__form" name="profile-form" method="post" id="form-add" novalidate>
+                <fieldset class="popup__set">
+                    <h2 class="popup__title">Новое место</h2>
+                    <label class="popup__field">
+                        <input class="popup__input" type="text" placeholder="Название" name="input-place"
+                            id="place-input" required minlength="2" maxlength="30">
+                        <span class="popup__input-error place-input-error"></span>
+                    </label>
+                    <label class="popup__field">
+                        <input class="popup__input" type="url" placeholder="Ссылка на картинку" name="input-link"
+                            id="link-input" required>
+                        <span class="popup__input-error link-input-error"></span>
+                    </label>
+                <button class="popup__submit popup__submit_type_inactive" type="submit" id="submit__add">Создать</button>
+            </fieldset>
             </form>
             <button class="popup__close popup__close_type_add-card" type="button"></button>
         </div>
@@ -80,7 +96,8 @@
             <button class="popup__close popup__close_type_img-fullscreen" type="button"></button>
         </div>
     </div>
-
+    
+    <script src="./scripts/validation.js"></script>
     <script src="./scripts/script.js"></script>
 </body>
 
