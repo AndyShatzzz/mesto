@@ -164,14 +164,18 @@ function createImgPopup(evt) {
 buttonEdit.addEventListener('click', function () {
   nameInput.value = profileName.textContent;
   jobInput.value = profileAbout.textContent;
+  disableValidation(popupEdit);
   openPopup(popupEdit);
+  disabledButtonSubmit(popupEdit);
 });
 
 // Слушатель открытия попапа добавления карточки
-buttonAdd.addEventListener('click', function(){
+buttonAdd.addEventListener('click', function () {
   placeInput.value = '';
   linkInput.value = '';
+  disableValidation(popupAdd);
   openPopup(popupAdd);
+  disabledButtonSubmit(popupAdd);
 });
 
 // Слушатель изменения Имени и Профессии.

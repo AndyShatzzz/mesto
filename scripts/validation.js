@@ -64,8 +64,6 @@ const showInputError = (formElement, inputElement, errorMessage) => {
       formElement.addEventListener('submit', function (evt) {
         evt.preventDefault();
       });
-      
-      
       const fieldsetList = Array.from(formElement.querySelectorAll('.popup__set'));
       fieldsetList.forEach((fieldSet) => {
         setEventListeners(fieldSet);
@@ -73,4 +71,17 @@ const showInputError = (formElement, inputElement, errorMessage) => {
     });
   };
   
-  enableValidation(checkingValidation);
+enableValidation(checkingValidation);
+
+const disableValidation = (popupElement) => {
+  const formDelete = Array.from(popupElement.querySelectorAll('.popup__input'));
+    formDelete.forEach((item) => {
+      hideInputError(popupElement, item);
+    });
+};
+
+function disabledButtonSubmit (popupElement) {
+  const buttonElement = popupElement.querySelector('.popup__submit');
+  buttonElement.disabled = true;
+  buttonElement.classList.add('popup__submit_type_inactive');
+}
