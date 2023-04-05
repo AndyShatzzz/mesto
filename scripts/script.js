@@ -24,7 +24,7 @@ const imageFromPopup = document.querySelector('.popup__image');
 const textFromPopup = document.querySelector('.popup__text');
 const buttonCloseImage = document.querySelector('.popup__close_type_img-fullscreen');
 const closeButtons = document.querySelectorAll('.popup__close');
-const popupContainer = document.querySelectorAll('#popup-container');
+const popupContainer = document.querySelectorAll('.popup__overlay');
 
 // Массив карточек по умолчанию.
 const initialCards = [
