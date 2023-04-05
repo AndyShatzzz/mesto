@@ -24,6 +24,7 @@ const imageFromPopup = document.querySelector('.popup__image');
 const textFromPopup = document.querySelector('.popup__text');
 const buttonCloseImage = document.querySelector('.popup__close_type_img-fullscreen');
 const closeButtons = document.querySelectorAll('.popup__close');
+const popupContainer = document.querySelectorAll('#popup-container');
 
 // Массив карточек по умолчанию.
 const initialCards = [
@@ -57,6 +58,7 @@ const initialCards = [
 function openPopup (item) {
   item.classList.add('popup_opened');
 };
+
 //функция закрытия попапа
 function closePopup (item) {
   item.classList.remove('popup_opened');
@@ -66,6 +68,25 @@ function closePopup (item) {
 closeButtons.forEach((button) => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
+});
+
+// Функции для закрытия попапов по оверлею или по Esc 
+popupContainer.forEach((button) => {
+  const popup = button.closest('.popup');
+  document.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+      closePopup(popup);
+    }
+  });
+});
+
+popupContainer.forEach((item) => {
+  const popup = item.closest('.popup');
+  popup.addEventListener('click', (evt) => {
+    if (evt.currentTarget === evt.target) {
+      closePopup(popup);
+    }
+  });
 });
 
 // Функция открытие попапа картинки на весь экран
@@ -164,43 +185,3 @@ element.addEventListener('click', evt => {
 
 // Слушатель добавления новой карточки
 formElementAdd.addEventListener('submit', handleSubmitAddCard);
-
-
-
-
-// Слушатели для закрытия попапов по оверлею или по Esc 
-popupEdit.addEventListener('click', (evt) => {
-  if (evt.currentTarget === evt.target) {
-    closePopup(popupEdit);
-  }
-});
-
-document.addEventListener('keydown', (evt) => {
-  if (evt.key === 'Escape') {
-    closePopup(popupEdit);
-  }
-});
-
-popupAdd.addEventListener('click', (evt) => {
-  if (evt.currentTarget === evt.target) {
-    closePopup(popupAdd);
-  }
-});
-
-document.addEventListener('keydown', (evt) => {
-  if (evt.key === 'Escape') {
-    closePopup(popupAdd);
-  }
-});
-
-imgPopup.addEventListener('click', (evt) => {
-  if (evt.currentTarget === evt.target) {
-    closePopup(imgPopup);
-  }
-});
-
-document.addEventListener('keydown', (evt) => {
-  if (evt.key === 'Escape') {
-    closePopup(imgPopup);
-  }
-});

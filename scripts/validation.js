@@ -1,3 +1,12 @@
+const checkingValidation = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: '.popup__submit_type_inactive',
+  inputErrorClass: '.popup__input_type_error',
+  errorClass: '.popup__input-error_type_active'
+};
+
 const showInputError = (formElement, inputElement, errorMessage) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add('popup__input_type_error');
@@ -29,9 +38,11 @@ const showInputError = (formElement, inputElement, errorMessage) => {
   const toggleButtonState = (inputList, buttonElement) => {
     if (hasInvalidInput(inputList)) {
       buttonElement.classList.add('popup__submit_type_inactive');
+      buttonElement.disabled = true;
     }
     else {
        buttonElement.classList.remove('popup__submit_type_inactive');
+       buttonElement.disabled = false;
     }
   };
   
@@ -62,4 +73,4 @@ const showInputError = (formElement, inputElement, errorMessage) => {
     });
   };
   
-  enableValidation();
+  enableValidation(checkingValidation);
