@@ -24,7 +24,7 @@ const imageFromPopup = document.querySelector('.popup__image');
 const textFromPopup = document.querySelector('.popup__text');
 const buttonCloseImage = document.querySelector('.popup__close_type_img-fullscreen');
 const closeButtons = document.querySelectorAll('.popup__close');
-const popupContainer = document.querySelectorAll('.popup__overlay');
+const popupContainers = document.querySelectorAll('.popup__overlay');
 
 // Массив карточек по умолчанию.
 const initialCards = [
@@ -57,11 +57,13 @@ const initialCards = [
 //функция открытия попапа
 function openPopup (item) {
   item.classList.add('popup_opened');
+  document.addEventListener('keydown', closeByEscape);
 };
 
 //функция закрытия попапа
 function closePopup (item) {
   item.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeByEscape);
 };
 
 // Функция закрытия всех попапов по крестику
@@ -70,17 +72,15 @@ closeButtons.forEach((button) => {
   button.addEventListener('click', () => closePopup(popup));
 });
 
-// Функции для закрытия попапов по оверлею или по Esc 
-popupContainer.forEach((button) => {
-  const popup = button.closest('.popup');
-  document.addEventListener('keydown', (evt) => {
-    if (evt.key === 'Escape') {
-      closePopup(popup);
-    }
-  });
-});
-
-popupContainer.forEach((item) => {
+// Функции для закрытия попапов по оверлею по Esc 
+function closeByEscape(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
+}
+// Функции для закрытия попапов по оверлею
+popupContainers.forEach((item) => {
   const popup = item.closest('.popup');
   popup.addEventListener('click', (evt) => {
     if (evt.currentTarget === evt.target) {
@@ -164,18 +164,17 @@ function createImgPopup(evt) {
 buttonEdit.addEventListener('click', function () {
   nameInput.value = profileName.textContent;
   jobInput.value = profileAbout.textContent;
-  disableValidation(popupEdit);
+  disableValidation(popupEdit, validationSettings);
   openPopup(popupEdit);
-  disabledButtonSubmit(popupEdit);
+  disabledButtonSubmit(popupEdit, validationSettings);
 });
 
 // Слушатель открытия попапа добавления карточки
 buttonAdd.addEventListener('click', function () {
-  placeInput.value = '';
-  linkInput.value = '';
-  disableValidation(popupAdd);
+  formElementAdd.reset();
+  disableValidation(popupAdd, validationSettings);
   openPopup(popupAdd);
-  disabledButtonSubmit(popupAdd);
+  disabledButtonSubmit(popupAdd, validationSettings);
 });
 
 // Слушатель изменения Имени и Профессии.
