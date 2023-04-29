@@ -12,12 +12,15 @@ import {
   formElementAdd,
   placeInput,
   linkInput,
+  imgPopup,
+  imageFromPopup,
+  textFromPopup,
   closeButtons,
   popupContainers,
 } from './Constans.js';
 import { validationSettings, FormValidation } from './FormValidator.js';
-import {Card} from './Card.js';
-
+import { Card } from './Card.js';
+export { createImgPopup };
 
 
 // Массив карточек по умолчанию.
@@ -48,25 +51,25 @@ const initialCards = [
   }
 ];
 
-//функция открытия попапа
-function openPopup (item) {
+//функция открытия попапа.
+function openPopup(item) {
   item.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEscape);
 };
 
-//функция закрытия попапа
-function closePopup (item) {
+//функция закрытия попапа.
+function closePopup(item) {
   item.classList.remove('popup_opened');
   document.removeEventListener('keydown', closeByEscape);
 };
 
-// Функция закрытия всех попапов по крестику
+// Функция закрытия всех попапов по крестику.
 closeButtons.forEach((button) => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
 });
 
-// Функции для закрытия попапов по оверлею по Esc 
+// Функции для закрытия попапов по оверлею по Esc.
 function closeByEscape(evt) {
   if (evt.key === 'Escape') {
     const openedPopup = document.querySelector('.popup_opened');
@@ -74,7 +77,7 @@ function closeByEscape(evt) {
   }
 }
 
-// Функции для закрытия попапов по оверлею
+// Функции для закрытия попапов по оверлею.
 popupContainers.forEach((item) => {
   const popup = item.closest('.popup');
   popup.addEventListener('click', (evt) => {
@@ -84,9 +87,17 @@ popupContainers.forEach((item) => {
   });
 });
 
+// Функция создания попапа с картинками на весь экран.
+function createImgPopup(image) {
+  imageFromPopup.src = image.src;
+  textFromPopup.textContent = image.alt;
+  imageFromPopup.alt = image.alt;
+  openPopup(imgPopup);
+};
+
 // Функция изменения Имени и Профессии.
-function handleFormEditSubmit (evt) {
-  evt.preventDefault(); 
+function handleFormEditSubmit(evt) {
+  evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileAbout.textContent = jobInput.value;
   closePopup(popupEdit);
@@ -96,15 +107,15 @@ function handleFormEditSubmit (evt) {
 buttonEdit.addEventListener('click', function () {
   nameInput.value = profileName.textContent;
   jobInput.value = profileAbout.textContent;
-  validFormEdit.disableValidation();
+  validFormEdit.removeErrors();
   openPopup(popupEdit);
   validFormEdit.disabledButtonSubmit();
 });
 
-// Слушатель открытия попапа добавления карточки
+// Слушатель открытия попапа добавления карточки.
 buttonAdd.addEventListener('click', function () {
   formElementAdd.reset();
-  validFormAdd.disableValidation();
+  validFormAdd.removeErrors();
   openPopup(popupAdd);
   validFormAdd.disabledButtonSubmit();
 });
@@ -118,17 +129,20 @@ validFormEdit.enableValidation();
 const validFormAdd = new FormValidation(validationSettings, formElementAdd);
 validFormAdd.enableValidation();
 
-// Добавление карточек по из массива.
+function creatingCard(item) {
+  const card = new Card(item, '#element__grid');
+  const cardElement = card.createCard();
+  return cardElement;
+}
+
+// Добавление карточек из массива.
 initialCards.forEach(item => {
-  const cardFromArr = new Card(item.name, item.link, element);
-  cardFromArr.createCard();
+  element.append(creatingCard(item));
 });
 
-// Добавление карточек через форму по инпутам.
+// Добавление карточек по инпутам.
 formElementAdd.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  const cardFromInput = new Card(placeInput.value, linkInput.value, element);
-  const cardElement = cardFromInput.createCard();
-  element.prepend(cardElement);
+  element.prepend(creatingCard({ name: placeInput.value, link: linkInput.value }));
   closePopup(popupAdd);
 });

@@ -71,7 +71,7 @@ export class FormValidation {
       }
     };
 
-    disableValidation () {
+    removeErrors () {
     this._inputList.forEach((item) => {
         this._hideInputError(item);
       });

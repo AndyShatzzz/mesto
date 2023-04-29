@@ -29,7 +29,7 @@
         <section class="element" id="el__card">
 
         </section>
-        
+
         <template id="element__grid">
             <div class="element__grid">
                 <button class="element__basket" type="button" id="element__basket"></button>
@@ -44,20 +44,20 @@
     <footer class="footer">
         <p class="footer__text">&COPY; 2023 Mesto Russia</p>
     </footer>
-<!--Попап открытия редактирования имени и профессии. -->
+    <!--Попап открытия редактирования имени и профессии. -->
     <div class="popup popup_type_edit-profile">
         <div class="popup__container popup__container_type_edit-profile popup__overlay">
             <form class="popup__form" name="profile-form" method="post" id="form-edit" novalidate>
                 <fieldset class="popup__set">
                     <h2 class="popup__title">Редактировать профиль</h2>
                     <label class="popup__field">
-                        <input class="popup__input" type="text" placeholder="Имя" name="input-name"
-                            id="name-input" required minlength="2" maxlength="40">
+                        <input class="popup__input" type="text" placeholder="Имя" name="input-name" id="name-input"
+                            required minlength="2" maxlength="40">
                         <span class="popup__input-error name-input-error"></span>
                     </label>
                     <label class="popup__field">
-                        <input class="popup__input" type="text" placeholder="О себе" name="input-job"
-                            id="job-input" required minlength="2" maxlength="200">
+                        <input class="popup__input" type="text" placeholder="О себе" name="input-job" id="job-input"
+                            required minlength="2" maxlength="200">
                         <span class="popup__input-error job-input-error"></span>
                     </label>
                     <button class="popup__submit" type="submit" id="submit__edit">Сохранить</button>
@@ -66,7 +66,7 @@
             <button class="popup__close popup__close_type_edit-profile" type="button"></button>
         </div>
     </div>
-<!--Попап добавления новой кароточки элементов. -->
+    <!--Попап добавления новой кароточки элементов. -->
     <div class="popup popup_type_add-card">
         <div class="popup__container popup__container_type_add-card popup__overlay">
             <form class="popup__form" name="profile-form" method="post" id="form-add" novalidate>
@@ -82,13 +82,14 @@
                             id="link-input" required>
                         <span class="popup__input-error link-input-error"></span>
                     </label>
-                <button class="popup__submit popup__submit_type_inactive" type="submit" id="submit__add">Создать</button>
-            </fieldset>
+                    <button class="popup__submit popup__submit_type_inactive" type="submit"
+                        id="submit__add">Создать</button>
+                </fieldset>
             </form>
             <button class="popup__close popup__close_type_add-card" type="button"></button>
         </div>
     </div>
-<!-- Попап открытия картинки на весь экран -->
+    <!-- Попап открытия картинки на весь экран -->
     <div class="popup popup_type_img-fullscreen">
         <div class="popup__img-container popup__overlay">
             <img class="popup__image">
@@ -96,7 +97,7 @@
             <button class="popup__close popup__close_type_img-fullscreen" type="button"></button>
         </div>
     </div>
-    
+
     <script type="module" src="./scripts/index.js"></script>
 </body>
 
