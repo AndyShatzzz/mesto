@@ -6,16 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Место</title>
-    <link rel="stylesheet" href="./pages/index.css">
 </head>
 
 <body class="page">
     <header class="header">
-        <img class="header__logo" src="./image/header-logo.svg" alt="Логотип Место">
+        <img class="header__logo" src="<%=require('./image/header-logo.svg')%>" alt="Логотип Место">
     </header>
     <main class="content">
         <section class="profile">
-            <img class="profile__avatar" src="./image/Jack-IvKusto.png" alt="Фото Жака ИвКусто">
+            <img class="profile__avatar" src="<%=require('./image/Jack-IvKusto.png')%>" alt="Фото Жака ИвКусто">
             <div class="profile__info">
                 <div class="profile__row-top">
                     <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -47,16 +46,16 @@
     <!--Попап открытия редактирования имени и профессии. -->
     <div class="popup popup_type_edit-profile">
         <div class="popup__container popup__container_type_edit-profile popup__overlay">
-            <form class="popup__form" name="profile-form" method="post" id="form-edit" novalidate>
+            <form class="popup__form" name="form-edit" method="post" id="form-edit" novalidate>
                 <fieldset class="popup__set">
                     <h2 class="popup__title">Редактировать профиль</h2>
                     <label class="popup__field">
-                        <input class="popup__input" type="text" placeholder="Имя" name="input-name" id="name-input"
+                        <input class="popup__input" type="text" placeholder="Имя" name="inputName" id="name-input"
                             required minlength="2" maxlength="40">
                         <span class="popup__input-error name-input-error"></span>
                     </label>
                     <label class="popup__field">
-                        <input class="popup__input" type="text" placeholder="О себе" name="input-job" id="job-input"
+                        <input class="popup__input" type="text" placeholder="О себе" name="inputJob" id="job-input"
                             required minlength="2" maxlength="200">
                         <span class="popup__input-error job-input-error"></span>
                     </label>
@@ -69,16 +68,16 @@
     <!--Попап добавления новой кароточки элементов. -->
     <div class="popup popup_type_add-card">
         <div class="popup__container popup__container_type_add-card popup__overlay">
-            <form class="popup__form" name="profile-form" method="post" id="form-add" novalidate>
+            <form class="popup__form" name="form-add" method="post" id="form-add" novalidate>
                 <fieldset class="popup__set">
                     <h2 class="popup__title">Новое место</h2>
                     <label class="popup__field">
-                        <input class="popup__input" type="text" placeholder="Название" name="input-place"
-                            id="place-input" required minlength="2" maxlength="30">
+                        <input class="popup__input" type="text" placeholder="Название" name="name" id="place-input"
+                            required minlength="2" maxlength="30">
                         <span class="popup__input-error place-input-error"></span>
                     </label>
                     <label class="popup__field">
-                        <input class="popup__input" type="url" placeholder="Ссылка на картинку" name="input-link"
+                        <input class="popup__input" type="url" placeholder="Ссылка на картинку" name="link"
                             id="link-input" required>
                         <span class="popup__input-error link-input-error"></span>
                     </label>
@@ -97,8 +96,6 @@
             <button class="popup__close popup__close_type_img-fullscreen" type="button"></button>
         </div>
     </div>
-
-    <script type="module" src="./scripts/index.js"></script>
 </body>
 
 </html>

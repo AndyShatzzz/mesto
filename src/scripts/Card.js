@@ -1,7 +1,5 @@
-import { createImgPopup } from './index.js';
-
 export class Card {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
@@ -10,8 +8,8 @@ export class Card {
     this._cardText = this._cardElement.querySelector('.element__text');
     this._cardLike = this._cardElement.querySelector('.element__like');
     this._cardBasket = this._cardElement.querySelector('.element__basket');
+    this._handleCardClick = handleCardClick;
   }
-
 
   _getTemplate() {
     const cardTemplate = document
@@ -41,7 +39,7 @@ export class Card {
     })
 
     this._cardImage.addEventListener('click', () => {
-      createImgPopup(this._cardImage);
+      this._handleCardClick(this._cardImage);
     })
   };
 
