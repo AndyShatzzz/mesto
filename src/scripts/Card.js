@@ -23,6 +23,7 @@ export class Card {
   _handleRemoveCard() {
     this._cardElement.remove();
     this._cardBasket.remove();
+    this._cardElement = null;
   };
 
   _handleCardLike() {
@@ -39,11 +40,11 @@ export class Card {
     })
 
     this._cardImage.addEventListener('click', () => {
-      this._handleCardClick(this._cardImage);
+      this._handleCardClick({ name: this._name, link: this._link });
     })
   };
 
-  createCard() {
+  generateCard() {
     this._cardImage.src = this._link;
     this._cardText.textContent = this._name;
     this._cardImage.alt = this._name;
