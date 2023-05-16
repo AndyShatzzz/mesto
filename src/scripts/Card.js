@@ -22,7 +22,6 @@ export class Card {
 
   _handleRemoveCard() {
     this._cardElement.remove();
-    this._cardBasket.remove();
     this._cardElement = null;
   };
 
