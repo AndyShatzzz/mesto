@@ -5,12 +5,15 @@ const nameInput = formElementEdit.querySelector('#name-input');
 const jobInput = formElementEdit.querySelector('#job-input');
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
+const profileAvatar = document.querySelector('.profile__avatar');
 const buttonCloseEdit = document.querySelector('.popup__close_type_edit-profile');
 const buttonCloseAdd = document.querySelector('.popup__close_type_add-card');
 const popupEdit = document.querySelector('.popup_type_edit-profile');
 const popupAdd = document.querySelector('.popup_type_add-card');
-const submitEdit = document.querySelector('#submit__edit');
-const submitAdd = document.querySelector('#submit__add');
+const buttonSubmitEdit = document.querySelector('#submit__edit');
+const buttonSubmitAdd = document.querySelector('#submit__add');
+const buttonSubmitAvatar = document.querySelector('#submit__avatar');
+const buttonSubmitDeleteCard = document.querySelector('#submit__delete-card');
 const cardTemplate = document.querySelector('#element__grid').content;
 const element = document.querySelector('#el__card');
 const elementGrid = cardTemplate.querySelector('.element__grid');
@@ -25,6 +28,23 @@ const textFromPopup = document.querySelector('.popup__text');
 const buttonCloseImage = document.querySelector('.popup__close_type_img-fullscreen');
 const closeButtons = document.querySelectorAll('.popup__close');
 const popupContainers = document.querySelectorAll('.popup__overlay');
+const popupAvatarEdit = document.querySelector('.profile__avatar-edit');
+const formAvatarEdit = document.querySelector('#form-edit-avatar');
+
+const loadingFormEdit = {
+  start: 'Сохранить',
+  loading: 'Сохранение...'
+};
+
+const loadingFormAdd = {
+  start: 'Создать',
+  loading: 'Создание...'
+};
+
+const loadingFormDeleteCard = {
+  start: 'Да',
+  loading: 'Удаление...'
+};
 
 const validationSettings = {
   formSelector: '.popup__form',
@@ -36,34 +56,6 @@ const validationSettings = {
   errorClass: 'popup__input-error_type_active'
 };
 
-// Массив карточек по умолчанию.
-const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-  ];
-
 export {
     buttonEdit,
     buttonAdd,
@@ -72,12 +64,15 @@ export {
     jobInput,
     profileName,
     profileAbout,
+    profileAvatar,
     buttonCloseEdit,
     buttonCloseAdd,
     popupEdit,
     popupAdd,
-    submitEdit,
-    submitAdd,
+    buttonSubmitEdit,
+    buttonSubmitAdd,
+    buttonSubmitAvatar,
+    buttonSubmitDeleteCard,
     cardTemplate,
     element,
     elementGrid,
@@ -92,6 +87,10 @@ export {
     buttonCloseImage,
     closeButtons,
     popupContainers,
-    initialCards,
     validationSettings,
+    popupAvatarEdit,
+    formAvatarEdit,
+    loadingFormEdit,
+    loadingFormAdd,
+    loadingFormDeleteCard,
 };
