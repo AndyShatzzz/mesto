@@ -1,4 +1,4 @@
-import '../pages/index.css';
+import './index.css';
 
 import {
     buttonEdit,
@@ -18,16 +18,16 @@ import {
     loadingFormAdd,
     loadingFormEdit,
     loadingFormDeleteCard
-} from './Constans.js';
-import { FormValidation } from './FormValidator.js';
-import { Card } from './Card.js';
-import { Section } from './Section.js';
-import PopupWithImage from './PopupWithImage.js';
-import PopupWithForm from './PopupWithForm.js';
-import UserInfo from './UserInfo.js';
-import PopupWithSubmit from './PopupWithSubmit.js';
+} from '../scripts/utils/Constans.js';
+import { FormValidation } from '../scripts/components/FormValidator.js';
+import { Card } from '../scripts/components/Card.js';
+import { Section } from '../scripts/components/Section.js';
+import PopupWithImage from '../scripts/components/PopupWithImage.js';
+import PopupWithForm from '../scripts/components/PopupWithForm.js';
+import UserInfo from '../scripts/components/UserInfo.js';
+import PopupWithSubmit from '../scripts/components/PopupWithSubmit.js';
 
-import { api } from './Api.js';
+import { api } from '../scripts/components/Api.js';
 
 // Вызов класса картинки карточки на весь экран
 const popupImage = new PopupWithImage('.popup_type_img-fullscreen');
@@ -83,8 +83,8 @@ Promise.all([api.getUserInfoValues(), api.getInitialCards()])
 
 // Функция создания новой карточки.
 function createCard(item) {
-  const card = new Card(item, '#element__grid', handleCardClick, handleOpenPopupDelete, userInfo.getUserId(), handleCardLikeState).generateCard();
-  return card;
+  const card = new Card(item, '#element__grid', handleCardClick, handleOpenPopupDelete, userInfo.getUserId(), handleCardLikeState);
+  return card.generateCard();
 };
 
 // Функция добавление карточек по инпутам.
@@ -93,7 +93,7 @@ function submitFormAdd(item) {
   return api
   .addNewCard(item)
   .then((item) => initialCardsSection.addItem(createCard(item)))
-  .then(() => this.close())
+  .then(() => popupClassAdd.close())
   .catch((err) => {
     console.log(err);
   })
@@ -119,7 +119,7 @@ function submitFormEdit(item) {
   .then((res) => {
     userInfo.setUserInfo(res);
   })
-  .then(() => this.close())
+  .then(() => popupClassEditSubmit.close())
   .catch((err) => {
     console.log(err);
   })
@@ -131,8 +131,8 @@ function handleRemoveCards(card) {
   toogleLoadingButton(buttonSubmitDeleteCard, loadingFormDeleteCard, true);
   return api.
   handleDeleteCard(card.getCardId())
-  .then(card.handleRemoveCard())
-  .then(() => this.close())
+  .then(() => card.handleRemoveCard())
+  .then(() => popupDeleteCard.close())
   .catch((err) => {
     console.log(err);
   })
@@ -140,12 +140,13 @@ function handleRemoveCards(card) {
 }
 
 // Функция постановки/снятия лайка
-function handleCardLikeState(id, state) {
+function handleCardLikeState(id, state, card) {
   return api
   .toogleStateLike(id, state)
-  .then((res) => {
-    this.changeLikeStatus(res.likes);
+  .then((res) =>  {
+    card.changeLikeStatus(res.likes);
   })
+  
   .catch((err) => {
     console.log(err);
   });
@@ -161,7 +162,7 @@ function submitFormAvatar(link) {
   return api
   .editAvatar(link)
   .then(res => userInfo.setUserInfo(res))
-  .then(() => this.close())
+  .then(() => popupClassEditAvatar.close())
   .catch((err) => {
     console.log(err);
   })

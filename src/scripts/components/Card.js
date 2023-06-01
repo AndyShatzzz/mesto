@@ -1,5 +1,6 @@
 export class Card {
   constructor(data, templateSelector, handleCardClick, handleOpenPopupDelete, userId, handleCardLikeState) {
+    this._data = data;
     this._name = data.name;
     this._link = data.link;
     this._owner = data.owner;
@@ -74,15 +75,11 @@ export class Card {
 
     this._cardLike.addEventListener('click', () => {
       if(this._checkLike(this._like)) {
-        this._handleCardLikeState(this._id, 'DELETE');
+        this._handleCardLikeState(this._id, 'DELETE', this);
       } else {
-        this._handleCardLikeState(this._id, 'PUT');
+        this._handleCardLikeState(this._id, 'PUT', this);
       }
     })
-
-    // this._cardLike.addEventListener('click', () => {
-    //   this._handleCardLike();
-    // })
 
     this._cardImage.addEventListener('click', () => {
       this._handleCardClick({ name: this._name, link: this._link });
